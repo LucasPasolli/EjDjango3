@@ -17,15 +17,48 @@ class PrestamoAdmin(admin.ModelAdmin):
    
 class LibroAdmin(admin.ModelAdmin): 
     list_display = ['tipoMaterial','codigo','autor','titulo','año','status','editorial',]
-   
+    
+    fieldsets = (
+        ('Descripcion', {
+            'fields':('tipoMaterial','autor','titulo','año','editorial',)
+        }),
+        ('Variables', {
+            'fields':('status','prestamo',)
+        }),
+    )
+
 class RevistaAdmin(admin.ModelAdmin): 
     list_display = ['tipoMaterial','codigo','autor','titulo','año','status',]
+    fieldsets = (
+        ('Descripcion', {
+            'fields':('tipoMaterial','autor','titulo','año',)
+        }),
+        ('Variables', {
+            'fields':('status','prestamo',)
+        }),
+    )
 
 class AlumnoAdmin(admin.ModelAdmin): 
     list_display = ['matricula','tipoPersona','nombre','apellido','correo','telefono','numLibros', 'adeudo',]
+    fieldsets = (
+        ('Descripcion', {
+            'fields':('tipoPersona','nombre','apellido','correo','telefono',)
+        }),
+        ('Variables', {
+            'fields':('numLibros', 'adeudo',)
+        }),
+    )
 
 class ProfesorAdmin(admin.ModelAdmin): 
     list_display = ['numEmpleado', 'tipoPersona', 'nombre', 'apellido', 'correo', 'telefono', 'numLibros', 'adeudo',]
+    fieldsets = (
+        ('Descripcion', {
+            'fields':('tipoPersona', 'nombre', 'apellido', 'correo', 'telefono',)
+        }),
+        ('Variables', {
+            'fields':('numLibros', 'adeudo',)
+        }),
+    )
    
 
 
@@ -34,8 +67,8 @@ class ProfesorAdmin(admin.ModelAdmin):
 
 admin.site.register(Prestamo, PrestamoAdmin)
 admin.site.register(Persona)
-admin.site.register(Profesor)
-admin.site.register(Alumno)
+admin.site.register(Profesor, ProfesorAdmin)
+admin.site.register(Alumno, AlumnoAdmin)
 admin.site.register(Material)
-admin.site.register(Libro)
-admin.site.register(Revista)
+admin.site.register(Libro, LibroAdmin)
+admin.site.register(Revista, RevistaAdmin)
