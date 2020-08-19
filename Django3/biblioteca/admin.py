@@ -16,11 +16,12 @@ class PrestamoAdmin(admin.ModelAdmin):
     inlines = [MaterialInline, PersonaInline]
    
 class LibroAdmin(admin.ModelAdmin): 
-    list_display = ['tipoMaterial','codigo','autor','titulo','año','status','editorial',]
-    
+    list_display = ['tipoMaterial','codigo','autor','titulo','año','status','editorial', 'portada',]
+    list_display_links = ['tipoMaterial','codigo','autor','titulo','año','status','editorial',]
+    search_fields = ['tipoMaterial','codigo','autor','titulo','año','status','editorial',]
     fieldsets = (
         ('Descripcion', {
-            'fields':('tipoMaterial','autor','titulo','año','editorial',)
+            'fields':('tipoMaterial','autor','titulo','año','editorial', 'portada',)
         }),
         ('Variables', {
             'fields':('status','prestamo',)
@@ -29,6 +30,8 @@ class LibroAdmin(admin.ModelAdmin):
 
 class RevistaAdmin(admin.ModelAdmin): 
     list_display = ['tipoMaterial','codigo','autor','titulo','año','status',]
+    list_display_links = ['tipoMaterial','codigo','autor','titulo','año','status',]
+    search_fields = ['tipoMaterial','codigo','autor','titulo','año','status',]
     fieldsets = (
         ('Descripcion', {
             'fields':('tipoMaterial','autor','titulo','año',)
@@ -40,6 +43,8 @@ class RevistaAdmin(admin.ModelAdmin):
 
 class AlumnoAdmin(admin.ModelAdmin): 
     list_display = ['matricula','tipoPersona','nombre','apellido','correo','telefono','numLibros', 'adeudo',]
+    list_display_links = ['matricula','tipoPersona','nombre','apellido','correo','telefono','numLibros', 'adeudo',]
+    search_fields = ['matricula','tipoPersona','nombre','apellido','correo','telefono','numLibros', 'adeudo',]
     fieldsets = (
         ('Descripcion', {
             'fields':('tipoPersona','nombre','apellido','correo','telefono',)
@@ -51,6 +56,8 @@ class AlumnoAdmin(admin.ModelAdmin):
 
 class ProfesorAdmin(admin.ModelAdmin): 
     list_display = ['numEmpleado', 'tipoPersona', 'nombre', 'apellido', 'correo', 'telefono', 'numLibros', 'adeudo',]
+    list_display_links = ['numEmpleado', 'tipoPersona', 'nombre', 'apellido', 'correo', 'telefono', 'numLibros', 'adeudo',]
+    search_fields = ['numEmpleado', 'tipoPersona', 'nombre', 'apellido', 'correo', 'telefono', 'numLibros', 'adeudo',]
     fieldsets = (
         ('Descripcion', {
             'fields':('tipoPersona', 'nombre', 'apellido', 'correo', 'telefono',)

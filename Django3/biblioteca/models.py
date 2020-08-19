@@ -56,7 +56,7 @@ class Persona(models.Model):
 class Libro(Material):
 
     editorial = models.CharField(max_length=50)
-
+    portada = models.FileField(blank = True)
     def __str__(self):
         return str(self.titulo) 
 
